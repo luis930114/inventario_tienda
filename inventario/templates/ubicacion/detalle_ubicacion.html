@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Ubicación{% endblock %}
+    
+{% block content %}
+
+    <h1>Detalle de Ubicación</h1>
+    <p><strong>Nombre:</strong> {{ ubicacion.nombre }}</p>
+    <p><strong>Descripción:</strong> {{ ubicacion.descripcion }}</p>
+    <p><strong>Almacén:</strong> {{ ubicacion.almacen.nombre }}</p>
+    <a href="{% url 'editar_ubicacion' ubicacion.pk %}">Editar</a>
+    <form action="{% url 'eliminar_ubicacion' ubicacion.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    <a href="{% url 'lista_ubicaciones' %}">Volver a la lista de Ubicaciones</a>
+
+{% endblock %}
+
+

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Ubicaciones{% endblock %}
+
+{% block content %}
+    <h1>Lista de Ubicaciones</h1>
+    <ul>
+        {% for ubicacion in ubicaciones %}
+            <li><a href="{% url 'detalle_ubicacion' ubicacion.pk %}">{{ ubicacion.nombre }}</a> - {{ ubicacion.almacen.nombre }}</li>
+        {% empty %}
+            <li>No hay ubicaciones disponibles.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'agregar_ubicacion' %}">Agregar Ubicación</a>
+{% endblock %}

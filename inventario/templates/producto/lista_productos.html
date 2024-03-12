@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% block content %}
+    <h1>Lista de Productos</h1>
+    <ul>
+        {% for producto in productos %}
+            <li><a href="{% url 'detalle_producto' producto.pk %}">{{ producto.nombre }}</a> - {{ producto.almacen.nombre }} - {{ producto.ubicacion.nombre }} </li>
+        {% empty %}
+            <li>No hay productos disponibles.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'agregar_producto' %}">Agregar producto</a>
+{% endblock %}

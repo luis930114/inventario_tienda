@@ -38,21 +38,29 @@
                     Productos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownProductos">
-                    <a class="dropdown-item" href="#">Lista de Productos</a>
-                    <a class="dropdown-item" href="#">Agregar Producto</a>
+                    <a class="dropdown-item" href="{% url 'lista_productos' %}">Lista de Productos</a>
+                    <a class="dropdown-item" href="{% url 'agregar_producto' %}">Agregar Producto</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProveedores" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Proveedores
+                    Almacenes
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownProveedores">
-                    <a class="dropdown-item" href="#">Lista de Proveedores</a>
-                    <a class="dropdown-item" href="#">Agregar Proveedor</a>
+                    <a class="dropdown-item" href="{% url 'lista_almacenes' %}">Lista de almacenes</a>
+                    <a class="dropdown-item" href="{% url 'agregar_almacen' %}">Agregar almacen</a>
+                    <a class="dropdown-item" href="{% url 'lista_ubicaciones' %}">Lista de ubicaciones</a>
+                    <a class="dropdown-item" href="{% url 'agregar_ubicacion' %}">Agregar ubicación</a>
                   </div>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Otros</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProveedores" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Movimientos
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownProveedores">
+                    <a class="dropdown-item" href="#">Lista de movimientos</a>
+                    <a class="dropdown-item" href="#">Agregar movimiento</a>
+                  </div>
                 </li>
               </ul>
             </div>

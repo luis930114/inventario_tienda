@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Almacén{% endblock %}
+    
+{% block content %}
+
+    <h1>¿Estás seguro que deseas eliminar este almacén?</h1>
+    <p><strong>Nombre:</strong> {{ almacen.nombre }}</p>
+    <p><strong>Dirección:</strong> {{ almacen.direccion }}</p>
+    <form action="{% url 'eliminar_almacen' almacen.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, Eliminar</button>
+    </form>
+    <a href="{% url 'lista_almacenes' %}">Cancelar</a>
+
+{% endblock %}
