@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Almacenes{% endblock %}
+
+{% block content %}
+    <h1>Lista de Almacenes</h1>
+    <ul>
+        {% for almacen in almacenes %}
+            <li><a href="{% url 'detalle_almacen' almacen.pk %}">{{ almacen.nombre }}</a></li>
+        {% empty %}
+            <li>No hay almacenes disponibles.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'agregar_almacen' %}">Agregar Almacen</a>
+{% endblock %}

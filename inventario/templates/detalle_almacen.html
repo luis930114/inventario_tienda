@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Almacén{% endblock %}
+    
+{% block content %}
+
+    <h1>Detalle de Almacén</h1>
+    <p><strong>Nombre:</strong> {{ almacen.nombre }}</p>
+    <p><strong>Dirección:</strong> {{ almacen.direccion }}</p>
+    <a href="{% url 'editar_almacen' almacen.pk %}">Editar</a>
+    <form action="{% url 'eliminar_almacen' almacen.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    <a href="{% url 'lista_almacenes' %}">Volver a la lista de Almacenes</a>
+
+{% endblock %}
+
+
