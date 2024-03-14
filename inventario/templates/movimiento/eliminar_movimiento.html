@@ -7,10 +7,10 @@
     <h1>¿Estás seguro que deseas eliminar esta ubicación?</h1>
     <p><strong>Nombre:</strong> {{ ubicacion.nombre }}</p>
     <p><strong>Descripción:</strong> {{ ubicacion.descripcion }}</p>
-    <form action="{% url 'eliminar_producto' producto.pk %}" method="post">
+    <form action="{% url 'eliminar_movimiento' movimiento.pk %}" method="post">
         {% csrf_token %}
         <button type="submit">Sí, Eliminar</button>
     </form>
-    <a href="{% url 'lista_productos' %}">Cancelar</a>
+    <a href="{% url 'lista_movimientos' %}">Cancelar</a>
 
 {% endblock %}

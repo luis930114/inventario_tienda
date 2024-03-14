@@ -44,4 +44,22 @@ urlpatterns = [
     path('producto/editar/<int:pk>/', EditarProducto.as_view(), name='editar_producto'),
     path('producto/eliminar/<int:pk>/', EliminarProducto.as_view(), name='eliminar_producto'),
 
+    path('motivos-ajuste/', ListaMotivosAjuste.as_view(), name='lista_motivos_ajuste'),
+    path('motivo-ajuste/<int:pk>/', DetalleMotivoAjuste.as_view(), name='detalle_motivo_ajuste'),
+    path('motivo-ajuste/agregar/', AgregarMotivoAjuste.as_view(), name='agregar_motivo_ajuste'),
+    path('motivo-ajuste/editar/<int:pk>/', EditarMotivoAjuste.as_view(), name='editar_motivo_ajuste'),
+    path('motivo-ajuste/eliminar/<int:pk>/', EliminarMotivoAjuste.as_view(), name='eliminar_motivo_ajuste'),
+
+    path('movimientos/', ListaMovimientos.as_view(), name='lista_movimientos'),
+    path('movimiento/<int:pk>/', DetalleMovimiento.as_view(), name='detalle_movimiento'),
+    path('movimiento/agregar/', AgregarMovimiento.as_view(), name='agregar_movimiento'),
+    path('movimiento/editar/<int:pk>/', EditarMovimiento.as_view(), name='editar_movimiento'),
+    path('movimiento/eliminar/<int:pk>/', EliminarMovimiento.as_view(), name='eliminar_movimiento'),
+
+    path('ajustes/', ListaAjustes.as_view(), name='lista_ajustes'),
+    path('ajuste/<int:pk>/', DetalleAjuste.as_view(), name='detalle_ajuste'),
+    path('ajuste/agregar/', AgregarAjuste.as_view(), name='agregar_ajuste'),
+    path('ajuste/editar/<int:pk>/', EditarAjuste.as_view(), name='editar_ajuste'),
+    path('ajuste/eliminar/<int:pk>/', EliminarAjuste.as_view(), name='eliminar_ajuste'),
+
 ]

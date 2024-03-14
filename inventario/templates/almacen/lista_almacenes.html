@@ -3,13 +3,35 @@
 {% block title %}Lista de Almacenes{% endblock %}
 
 {% block content %}
-    <h1>Lista de Almacenes</h1>
-    <ul>
-        {% for almacen in almacenes %}
-            <li><a href="{% url 'detalle_almacen' almacen.pk %}">{{ almacen.nombre }}</a></li>
-        {% empty %}
-            <li>No hay almacenes disponibles.</li>
-        {% endfor %}
-    </ul>
+
+<div class="container mt-5">
+        <h1 class="mb-4">Lista de Almacenes</h1>
+        <table id="movimientos-table" class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                {% for almacen in almacenes %}
+                <tr>
+                    <td><a href="{% url 'detalle_almacen' almacen.pk %}">{{ almacen.id }}</a></td>
+                    <td>{{ almacen.nombre }}</td>
+                    <td>{{ almacen.direccion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
     <a href="{% url 'agregar_almacen' %}">Agregar Almacen</a>
+</div>
+
+    <script>
+        $(document).ready(function() {
+            $('#movimientos-table').DataTable();
+        });
+    </script>
 {% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Ajustes{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+        <h1 class="mb-4">Lista de Ajustes</h1>
+        <table id="movimientos-table" class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Motivo</th>
+                    <th>Almacen</th>
+                    <th>Ubicación</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                {% for ajuste in ajustes %}
+                <tr>
+                    <td><a href="{% url 'detalle_ajuste' ajuste.pk %}">{{ ajuste.id }}</a></td>
+                    <td>{{ ajuste.producto.nombre }}</td>
+                    <td>{{ ajuste.cantidad }}</td>
+                    <td>{{ ajuste.fecha }}</td>
+                    <td>{{ ajuste.motivo.descripcion }}</td>
+                    <td>{{ ajuste.almacen.nombre }}</td>
+                    <td>{{ ajuste.ubicacion.nombre }}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <a href="{% url 'agregar_ajuste' %}">Agregar ajuste</a>
+</div>
+
+    <script>
+        $(document).ready(function() {
+            $('#movimientos-table').DataTable();
+        });
+    </script>
+{% endblock %}

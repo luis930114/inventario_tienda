@@ -3,13 +3,40 @@
 {% block title %}Lista de Productos{% endblock %}
 
 {% block content %}
-    <h1>Lista de Productos</h1>
-    <ul>
-        {% for producto in productos %}
-            <li><a href="{% url 'detalle_producto' producto.pk %}">{{ producto.nombre }}</a> - {{ producto.almacen.nombre }} - {{ producto.ubicacion.nombre }} </li>
-        {% empty %}
-            <li>No hay productos disponibles.</li>
-        {% endfor %}
-    </ul>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Lista de Productos</h1>
+    <table id="movimientos-table" class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Almacen</th>
+                <th>Ubicación</th>
+                <th>Categoria</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td><a href="{% url 'detalle_producto' producto.pk %}">{{ producto.id }}</a></td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.cantidad }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.almacen.nombre }}</td>
+                <td>{{ producto.ubicacion.nombre }}</td>
+                <td>{{ producto.categoria }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     <a href="{% url 'agregar_producto' %}">Agregar producto</a>
+</div> 
 {% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Movimientos{% endblock %}
+
+{% block content %}
+    
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Lista de Movimientos</h1>
+        <table id="movimientos-table" class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Tipo</th>
+                    <th>Fecha</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movimiento in movimientos %}
+                <tr>
+                    <td><a href="{% url 'detalle_movimiento' movimiento.pk %}">{{ movimiento.id }}</a></td>
+                    <td>{{ movimiento.producto }}</td>
+                    <td>{{ movimiento.cantidad }}</td>
+                    <td>{{ movimiento.tipo }}</td>
+                    <td>{{ movimiento.fecha }}</td>
+                    <td>{{ movimiento.origen }}</td>
+                    <td>{{ movimiento.destino }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'agregar_movimiento' %}">Agregar Movimiento</a>
+    </div>
+   
+    
+    <script>
+        $(document).ready(function() {
+            $('#movimientos-table').DataTable();
+        });
+    </script>
+{% endblock %}

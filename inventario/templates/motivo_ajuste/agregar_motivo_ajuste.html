@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Motivo de ajustes{% endblock %}
+
+{% block content %}
+    <h1>Agregar Motivo de ajustes</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agregar Motivos de ajustes</button>
+    </form>
+{% endblock %}
+
+

@@ -38,19 +38,27 @@ class Ajuste(models.Model):
     cantidad = models.IntegerField()
     fecha = models.DateField(auto_now_add=True)
     motivo = models.ForeignKey(MotivoAjuste, on_delete=models.CASCADE)
+    almacen = models.ForeignKey(Almacen, on_delete=models.CASCADE)
+    ubicacion = models.ForeignKey(Ubicacion, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Ajuste de {self.producto.nombre} el {self.fecha}"
     
 class Movimiento(models.Model):
+
+    TIPO_CHOICES = [
+        ('Entrada', 'Entrada'),
+        ('Salida', 'Salida'),
+    ]
+
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
-    tipo = models.CharField(max_length=50)  # Tipo de movimiento: por ejemplo, "Entrada" o "Salida"
+    tipo = models.CharField(max_length=50, choices=TIPO_CHOICES)  # Tipo de movimiento: por ejemplo, "Entrada" o "Salida"
     fecha = models.DateTimeField(auto_now_add=True)
     origen = models.ForeignKey(Ubicacion, related_name='movimientos_origen', on_delete=models.CASCADE)
     destino = models.ForeignKey(Ubicacion, related_name='movimientos_destino', on_delete=models.CASCADE)
 
-    def save(self, *args, **kwargs):
+    """def save(self, *args, **kwargs):
         # Manejo de excepciones básicas
         if self.origen == self.destino:
             raise ValueError("El origen y el destino no pueden ser iguales")
@@ -58,7 +66,7 @@ class Movimiento(models.Model):
             raise ValueError("El tipo de movimiento debe ser 'Entrada' o 'Salida'")
         if self.cantidad <= 0:
             raise ValueError("La cantidad debe ser mayor que cero")
-        super().save(*args, **kwargs)
+        super().save(*args, **kwargs) """
 
     def __str__(self):
         return f"Movimiento de {self.producto.nombre} el {self.fecha}"

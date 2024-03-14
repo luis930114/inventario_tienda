@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>{% block title %}Mi Inventario de tienda{% endblock %}</title>
    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS de DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
     <!-- Custom CSS -->
     <style>
       .footer {
@@ -58,8 +61,17 @@
                     Movimientos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownProveedores">
-                    <a class="dropdown-item" href="#">Lista de movimientos</a>
-                    <a class="dropdown-item" href="#">Agregar movimiento</a>
+                    <a class="dropdown-item" href="{% url 'lista_movimientos' %}">Lista de movimientos</a>
+                    <a class="dropdown-item" href="{% url 'agregar_movimiento' %}">Agregar movimiento</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProveedores" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ajustes
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownProveedores">
+                    <a class="dropdown-item" href="{% url 'lista_ajustes' %}">Lista de ajustes</a>
+                    <a class="dropdown-item" href="{% url 'agregar_ajuste' %}">Agregar ajustes</a>
                   </div>
                 </li>
               </ul>
@@ -69,6 +81,7 @@
     </header>
    
     {% block content %}
+    {% load static %}
     {% endblock %}
     <footer>
         <footer class="footer">
@@ -99,6 +112,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script>
 
 </body>
 </html>

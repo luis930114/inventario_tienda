@@ -3,13 +3,32 @@
 {% block title %}Lista de Ubicaciones{% endblock %}
 
 {% block content %}
-    <h1>Lista de Ubicaciones</h1>
-    <ul>
-        {% for ubicacion in ubicaciones %}
-            <li><a href="{% url 'detalle_ubicacion' ubicacion.pk %}">{{ ubicacion.nombre }}</a> - {{ ubicacion.almacen.nombre }}</li>
-        {% empty %}
-            <li>No hay ubicaciones disponibles.</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'agregar_ubicacion' %}">Agregar Ubicación</a>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Lista de Ubicaciones</h1>
+    <table id="movimientos-table" class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Almacen</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for ubicacion in ubicaciones %}
+            <tr>
+                <td><a href="{% url 'detalle_ubicacion' ubicacion.pk %}">{{ ubicacion.id }}</a></td>
+                <td>{{ ubicacion.nombre }}</td>
+                <td>{{ ubicacion.descripcion }}</td>
+                <td>{{ ubicacion.almacen }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<a href="{% url 'agregar_ubicacion' %}">Agregar Ubicación</a>
+</div>
 {% endblock %}

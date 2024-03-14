@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Motivos de ajustes{% endblock %}
+
+{% block content %}
+    <h1>Lista de Motivos de ajustes</h1>
+    <ul>
+        {% for motivo_ajuste in motivos_ajuste %}
+            <li><a href="{% url 'detalle_motivo_ajuste' motivo_ajuste.pk %}">{{ motivo_ajuste.id }}</a> - {{ motivo_ajuste.descripcion }}</li>
+        {% empty %}
+            <li>No hay motivos de ajuste disponibles.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'agregar_motivo_ajuste' %}">Agregar motivo de ajuste</a>
+{% endblock %}

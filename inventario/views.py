@@ -2,8 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Producto, Almacen, Ubicacion
-from .forms import ProductoForm, AlmacenForm, UbicacionForm
+from .models import Producto, Almacen, Ubicacion, MotivoAjuste, Movimiento, Ajuste
+from .forms import ProductoForm, AlmacenForm, UbicacionForm, MotivoAjusteForm, MovimientoForm, AjusteForm
 
 
 
@@ -91,26 +91,104 @@ class AgregarProducto(CreateView):
     model = Producto
     form_class = ProductoForm
     template_name = 'producto/agregar_producto.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('lista_productos')
 
-class ListaProductos(ListView):
-    model = Producto
-    template_name = 'producto/lista_productos.html'
-    context_object_name = 'productos'
 
 class DetalleProducto(DetailView):
     model = Producto
-    template_name = 'detalle_producto.html'
+    template_name = 'producto/detalle_producto.html'
     context_object_name = 'producto'
 
 class EditarProducto(UpdateView):
     model = Producto
-    fields = ['nombre', 'descripcion', 'cantidad', 'precio', 'almacen', 'ubicacion', 'categoria']
-    template_name = 'editar_producto.html'
+    form_class = ProductoForm
+    template_name = 'producto/editar_producto.html'
     success_url = reverse_lazy('lista_productos')
 
 class EliminarProducto(DeleteView):
     model = Producto
     template_name = 'eliminar_producto.html'
     success_url = reverse_lazy('lista_productos')
+
+class ListaMotivosAjuste(ListView):
+    model = MotivoAjuste
+    template_name = 'motivo_ajuste/lista_motivos_ajuste.html'
+    context_object_name = 'motivos_ajuste'
+
+class DetalleMotivoAjuste(DetailView):
+    model = MotivoAjuste
+    template_name = 'motivo_ajuste/detalle_motivo_ajuste.html'
+    context_object_name = 'motivo_ajuste'
+
+class AgregarMotivoAjuste(CreateView):
+    model = MotivoAjuste
+    form_class = MotivoAjusteForm
+    template_name = 'motivo_ajuste/agregar_motivo_ajuste.html'
+    success_url = reverse_lazy('lista_motivos_ajuste')
+
+class EditarMotivoAjuste(UpdateView):
+    model = MotivoAjuste
+    form_class = MotivoAjusteForm
+    template_name = 'motivo_ajuste/editar_motivo_ajuste.html'
+    success_url = reverse_lazy('lista_motivos_ajuste')
+
+class EliminarMotivoAjuste(DeleteView):
+    model = MotivoAjuste
+    template_name = 'motivo_ajuste/eliminar_motivo_ajuste.html'
+    success_url = reverse_lazy('lista_motivos_ajuste')
+
+class ListaMovimientos(ListView):
+    model = Movimiento
+    template_name = 'movimiento/lista_movimientos.html'
+    context_object_name = 'movimientos'
+
+class DetalleMovimiento(DetailView):
+    model = Movimiento
+    template_name = 'movimiento/detalle_movimiento.html'
+    context_object_name = 'movimiento'
+
+class AgregarMovimiento(CreateView):
+    model = Movimiento
+    form_class = MovimientoForm
+    template_name = 'movimiento/agregar_movimiento.html'
+    success_url = reverse_lazy('lista_movimientos')
+
+class EditarMovimiento(UpdateView):
+    model = Movimiento
+    form_class = MovimientoForm
+    template_name = 'movimiento/editar_movimiento.html'
+    success_url = reverse_lazy('lista_movimientos')
+
+class EliminarMovimiento(DeleteView):
+    model = Movimiento
+    template_name = 'movimiento/eliminar_movimiento.html'
+    success_url = reverse_lazy('lista_movimientos')
+
+class ListaAjustes(ListView):
+    model = Ajuste
+    template_name = 'ajuste/lista_ajustes.html'
+    context_object_name = 'ajustes'
+
+class DetalleAjuste(DetailView):
+    model = Ajuste
+    template_name = 'ajuste/detalle_ajuste.html'
+    context_object_name = 'ajuste'
+
+class AgregarAjuste(CreateView):
+    model = Ajuste
+    form_class = AjusteForm
+    template_name = 'ajuste/agregar_ajuste.html'
+    success_url = reverse_lazy('lista_ajustes')
+
+class EditarAjuste(UpdateView):
+    model = Ajuste
+    form_class = AjusteForm
+    template_name = 'ajuste/editar_ajuste.html'
+    success_url = reverse_lazy('lista_ajustes')
+
+class EliminarAjuste(DeleteView):
+    model = Ajuste
+    template_name = 'ajuste/eliminar_ajuste.html'
+    success_url = reverse_lazy('lista_ajustes')
+
 
