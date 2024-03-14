@@ -62,4 +62,7 @@ urlpatterns = [
     path('ajuste/editar/<int:pk>/', EditarAjuste.as_view(), name='editar_ajuste'),
     path('ajuste/eliminar/<int:pk>/', EliminarAjuste.as_view(), name='eliminar_ajuste'),
 
+    path('producto/buscar/', views.buscar_productos, name='buscar_productos'),
+    path('producto/asignar-producto-nueva-ubicacion/<int:pk>/', views.asignar_producto, name='asignar_producto_ubicacion'),
+
 ]

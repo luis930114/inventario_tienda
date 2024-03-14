@@ -32,17 +32,6 @@ class MotivoAjuste(models.Model):
 
     def __str__(self):
         return self.descripcion
-
-class Ajuste(models.Model):
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    cantidad = models.IntegerField()
-    fecha = models.DateField(auto_now_add=True)
-    motivo = models.ForeignKey(MotivoAjuste, on_delete=models.CASCADE)
-    almacen = models.ForeignKey(Almacen, on_delete=models.CASCADE)
-    ubicacion = models.ForeignKey(Ubicacion, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"Ajuste de {self.producto.nombre} el {self.fecha}"
     
 class Movimiento(models.Model):
 
@@ -70,4 +59,15 @@ class Movimiento(models.Model):
 
     def __str__(self):
         return f"Movimiento de {self.producto.nombre} el {self.fecha}"
+    
+class Ajuste(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    fecha = models.DateField(auto_now_add=True)
+    motivo = models.ForeignKey(MotivoAjuste, on_delete=models.CASCADE)
+    almacen = models.ForeignKey(Almacen, on_delete=models.CASCADE)
+    ubicacion = models.ForeignKey(Ubicacion, on_delete=models.CASCADE)
+    movimiento = models.OneToOneField(Movimiento, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"Ajuste de {self.producto.nombre} el {self.fecha}"
 

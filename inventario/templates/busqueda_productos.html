@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Lista de Productos{% endblock %}
+{% block title %}Búsqueda de Productos{% endblock %}
 
 {% block content %}
-
 <div class="container mt-5">
-    <h1 class="mb-4">Lista de Productos</h1>
-    <table id="movimientos-table" class="table">
+    <h1 class="mb-4">Búsqueda de Productos</h1>
+    <table id="productos-table" class="table">
         <thead>
             <tr>
                 <th>id</th>
@@ -17,8 +16,6 @@
                 <th>Almacen</th>
                 <th>Ubicación</th>
                 <th>Categoria</th>
-                <th>Acciones</th>
-               
             </tr>
         </thead>
         <tbody>
@@ -32,24 +29,18 @@
                 <td>{{ producto.almacen.nombre }}</td>
                 <td>{{ producto.ubicacion.nombre }}</td>
                 <td>{{ producto.categoria }}</td>
-                <td> <a href="{% url 'editar_producto' producto.pk %}" class="btn btn-primary btn-sm">Editar</a>
-                    <form action="{% url 'eliminar_producto' producto.pk %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                    </form> 
-                    <a href="{% url 'asignar_producto_ubicacion' producto.pk %}" class="btn btn-info btn-sm">cambiar ubicación</a>
-                </td>
 
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
 
-    <a href="{% url 'agregar_producto' %}">Agregar producto</a>
-</div> 
 <script>
     $(document).ready(function() {
-        $('#movimientos-table').DataTable();
+        $('#productos-table').DataTable({
+            searching: true // Habilitar la búsqueda dinámica
+        });
     });
 </script>
 {% endblock %}

@@ -44,4 +44,13 @@ class MovimientoForm(forms.ModelForm):
 class AjusteForm(forms.ModelForm):
     class Meta:
         model = Ajuste
-        fields = ['producto', 'cantidad', 'motivo','almacen', 'ubicacion']
+        fields = ['producto', 'motivo','almacen', 'ubicacion', 'movimiento']
+
+class AsignarProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ['ubicacion', 'nombre']  
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['nombre'].widget.attrs['readonly'] = True 
